@@ -12,27 +12,7 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms :b
 
 app.use(cors())
 
-let persons = [
-    { id: 1,
-      name: "Arto Hellas", 
-      number: "040-123456" 
-    },
-    { 
-      id: 2,
-      name: "Ada Lovelace",
-      number: "39-44-535954"
-    }, 
-    { 
-      id: 3,
-      name: "Dan Abramov", 
-      number: "12-32-5678" 
-    },
-    { 
-      id: 4,
-      name: "Dan Abramov", 
-      number: "12-32-5678" 
-    }
-]
+let persons = []
 
 app.get('/', (req, res) => {
     res.send('<h1>Hello World!</h1>')
@@ -85,12 +65,12 @@ app.post('/api/persons', (request, response) => {
         return response.status(400).json({
             error: 'number missing'
         })
-    }
+    }/*
     if (persons.map(p => p.name === body.name)) {
         return response.status(400).json({
             error: 'name must be unique'
         })
-    }
+    }*/
     const person = {
         name: body.name,
         number: body.number,
